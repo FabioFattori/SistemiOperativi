@@ -1,0 +1,1 @@
+double quadrato(double x);

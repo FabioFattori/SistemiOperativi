@@ -1,0 +1,1 @@
+double dimezzaCos(double x);
