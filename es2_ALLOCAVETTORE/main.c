@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <stdio.h>
-#include "macro.h"
 
 int main(){
 	int* vet;
