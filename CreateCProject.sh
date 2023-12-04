@@ -15,7 +15,9 @@ touch main.c && touch Makefile
 echo "#include <stdio.h>
 #include <stdlib.h>
 #include <malloc.h>
-#include <threads.h>
+#include <pthread.h>
+#include <unistd.h>
+#include <string.h>
 
 int main(int argc, char const *argv[])
 {
