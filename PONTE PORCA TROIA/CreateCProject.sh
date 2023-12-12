@@ -19,8 +19,6 @@ echo "#include <stdio.h>
 #include <unistd.h>
 #include <string.h>
 #include \"DBGpthread.h\"
-#include \"printerror.h\"
-
 
 int main(int argc, char const *argv[])
 {
@@ -30,6 +28,7 @@ int main(int argc, char const *argv[])
 
 echo "CFLAGS=-ansi -Wpedantic -Wall -D_REENTRANT -D_THREAD_SAFE -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE=200112L
 LIBRARIES=-lpthread
+DBGPTHREADFUNCTION_SOURCE_DIR=/home/studente/Desktop/SistemiOperativi/
 LFLAGS=
 
 all: main.exe
@@ -37,11 +36,11 @@ all: main.exe
 main.exe: main.o DBGpthread.o
 	gcc \${LFLAGS} -o main.exe main.o DBGpthread.o -lm \${LIBRARIES}
 	
-main.o: main.c DBGpthread.h printerror.h
+main.o: main.c \${DBGPTHREADFUNCTION_SOURCE_DIR}DBGpthread.h \${DBGPTHREADFUNCTION_SOURCE_DIR}printerror.h
 	gcc -c \${CFLAGS} main.c
 
-DBGpthread.o: DBGpthread.c printerror.h
-	gcc ${CFLAGS} -c DBGpthread.c 
+DBGpthread.o: \${DBGPTHREADFUNCTION_SOURCE_DIR}DBGpthread.c \${DBGPTHREADFUNCTION_SOURCE_DIR}printerror.h
+	gcc ${CFLAGS} -c \${DBGPTHREADFUNCTION_SOURCE_DIR}DBGpthread.c -I\${DBGPTHREADFUNCTION_SOURCE_DIR}
 
 .PHONY: clean
 

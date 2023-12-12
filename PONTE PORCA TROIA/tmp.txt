@@ -1,0 +1,6 @@
+manubrio_strappato 0
+pedale_rotto 0
+drittone_in_un_campo 0
+freni_allentati 1
+ribaltamento 1
+ghiaccio 0

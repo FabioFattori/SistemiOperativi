@@ -77,10 +77,10 @@ void *Vacca(void *arg)
 {
 	char Plabel[128];
 	intptr_t indice;
-
 	indice = (intptr_t)arg;
 	sprintf(Plabel, "Vacca%" PRIiPTR "", indice);
 
+	free(arg);
 	/*  da completare  */
 
 	while (1)
