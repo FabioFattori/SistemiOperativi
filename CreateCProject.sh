@@ -18,6 +18,7 @@ echo "#include <stdio.h>
 #include <pthread.h>
 #include <unistd.h>
 #include <string.h>
+#include \"DBGpthread.h\"
 
 int main(int argc, char const *argv[])
 {
@@ -27,20 +28,23 @@ int main(int argc, char const *argv[])
 
 echo "CFLAGS=-ansi -Wpedantic -Wall -D_REENTRANT -D_THREAD_SAFE -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE=200112L
 LIBRARIES=-lpthread
+DBGPTHREADFUNCTION_SOURCE_DIR=/home/studente/Desktop/SistemiOperativi/
 LFLAGS=
 
 all: main.exe
 
-main.exe: main.o
-	gcc \${LFLAGS} -o main.exe main.o -lm \${LIBRARIES}
+main.exe: main.o DBGpthread.o
+	gcc \${LFLAGS} -o main.exe main.o DBGpthread.o -lm \${LIBRARIES}
 	
-main.o: main.c
+main.o: main.c \${DBGPTHREADFUNCTION_SOURCE_DIR}DBGpthread.h \${DBGPTHREADFUNCTION_SOURCE_DIR}printerror.h
 	gcc -c \${CFLAGS} main.c
 
+DBGpthread.o: \${DBGPTHREADFUNCTION_SOURCE_DIR}DBGpthread.c \${DBGPTHREADFUNCTION_SOURCE_DIR}printerror.h
+	gcc ${CFLAGS} -c \${DBGPTHREADFUNCTION_SOURCE_DIR}DBGpthread.c -I\${DBGPTHREADFUNCTION_SOURCE_DIR}
 
 .PHONY: clean
 
-clean: rm -f main.o main.exe *~core" >> Makefile;
+clean: rm -f main.o DBGpthread.o main.exe *~core" >> Makefile;
 
 cd ..
 echo "Project created!";

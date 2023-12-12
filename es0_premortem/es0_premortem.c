@@ -9,9 +9,41 @@
 #include <stdio.h>
 #include <pthread.h>
 
+/* uso i thread quindi definisco i due simboli _THREAD_SAFE e _REENTRANT
+   Li ho messi anche nel Makefile per far vedere che si possono mettere li' 
+*/
+#ifndef _REENTRANT
+   #define _REENTRANT
+#endif
+#ifndef _THREAD_SAFE
+  #define _THREAD_SAFE
+#endif
+/* per usare la funzione usleep bisogna definire il simbolo _DEFAULT_SOURCE
+   Ho inserito questo simbolo anche nel Makefile per far vedere 
+   che si puo' mettere li'.
+*/
+#ifndef _DEFAULT_SOURCE
+   #define _DEFAULT_SOURCE
+#endif
+
 #define NUM_THREADS 100
 #define WAITING_TIME 1000
-
+/* uso i thread quindi definisco i due simboli _THREAD_SAFE e _REENTRANT
+   Li ho messi anche nel Makefile per far vedere che si possono mettere li' 
+*/
+#ifndef _REENTRANT
+   #define _REENTRANT
+#endif
+#ifndef _THREAD_SAFE
+  #define _THREAD_SAFE
+#endif
+/* per usare la funzione usleep bisogna definire il simbolo _DEFAULT_SOURCE
+   Ho inserito questo simbolo anche nel Makefile per far vedere 
+   che si puo' mettere li'.
+*/
+#ifndef _DEFAULT_SOURCE
+   #define _DEFAULT_SOURCE
+#endif
 typedef struct{
 	pthread_t parentID;
 	int currentID;
@@ -55,7 +87,7 @@ int main()
 
 		      
 		
-		toPass->parentID =pthread_self();
+		toPass->parentID = pthread_self();
 		printf("Creating thread %ld\n", toPass->parentID);
 		rc = pthread_create (&toPass->parentID, NULL, CreateTreadh, toPass );  /* NOTARE l'ultimo parametro */
 		if (rc){
