@@ -1,0 +1,5 @@
+divano1 200 83 105
+Divano2 170 85 115
+divaNo3 185 65 99
+divano4 170 85 115
+divanO5 220 70 145
