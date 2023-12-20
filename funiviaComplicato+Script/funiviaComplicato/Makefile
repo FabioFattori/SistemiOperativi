@@ -1,6 +1,5 @@
 CFLAGS=-ansi -Wpedantic -Wall -D_REENTRANT -D_THREAD_SAFE -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE=200112L
 LIBRARIES=-lpthread
-DBGPTHREADFUNCTION_SOURCE_DIR=/home/studente/Desktop/SistemiOperativi/
 LFLAGS=
 
 all: main.exe
